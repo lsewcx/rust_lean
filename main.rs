@@ -1,12 +1,12 @@
 use std::io::{self, BufRead};
 
-fn square(n: i32) -> i32 {
-    // Return n * n.
-    n * n
+fn count(s: &str) -> usize {
+
+    return s.len();
 }
 
 fn main() {
     let stdin = io::stdin();
-    let n: i32 = stdin.lock().lines().next().unwrap().unwrap().trim().parse().unwrap();
-    println!("{}", square(n));
+    let line = stdin.lock().lines().next().unwrap().unwrap();
+    println!("{}", count(&line));
 }
