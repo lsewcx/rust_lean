@@ -2,10 +2,19 @@ use std::io::{self, BufRead};
 
 fn main() {
     let stdin = io::stdin();
-    let mut iter = stdin.lock().lines();
-    let name = iter.next().unwrap().unwrap();
-    let age: i32 = iter.next().unwrap().unwrap().trim().parse().unwrap();
-    // Print the greeting.
-    let _ = (&name, age);
-    println!("Hi, {}! You are {} years old.", name, age);
+    let n: i32 = stdin
+        .lock()
+        .lines()
+        .next()
+        .unwrap()
+        .unwrap()
+        .trim()
+        .parse()
+        .unwrap();
+    match (n % 3 == 0, n % 5 == 0) {
+        (true, false) => println!("Fizz"),
+        (false, true) => println!("Buzz"),
+        (true, true) => println!("FizzBuzz"),
+        (false, false) => println!("{}", n),
+    }
 }
