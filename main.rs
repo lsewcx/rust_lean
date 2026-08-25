@@ -1,10 +1,10 @@
-use std::io::Read;
+use std::io::{self, BufRead};
+
 
 fn main() {
-    let mut input = String::new();
-    std::io::stdin().read_to_string(&mut input).unwrap();
-    let mut it = input.split_whitespace();
-    let a: i64 = it.next().unwrap().parse().unwrap();
-    let b: i64 = it.next().unwrap().parse().unwrap();
-    println!("{}", a + b);
+    let stdin = io::stdin();
+    let mut iter = stdin.lock().lines();
+    let w: i64 = iter.next().unwrap().unwrap().trim().parse().unwrap();
+    let h: i64 = iter.next().unwrap().unwrap().trim().parse().unwrap();
+    println!("{}", w * h);
 }
