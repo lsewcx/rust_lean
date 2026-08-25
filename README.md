@@ -1,61 +1,98 @@
-# Rust Fundamentals
+# Rust 基础知识学习 (Rust Fundamentals)
 
 [![shipthatcode — Rust Fundamentals](https://api.shipthatcode.com/cert/cc5dbd1077c14a6728bcae86d8a73093.svg)](https://shipthatcode.com/courses/rust-fundamentals)
 
-My working repo for [Rust Fundamentals](https://shipthatcode.com/courses/rust-fundamentals) on [shipthatcode.com](https://shipthatcode.com) — built lesson by lesson in my own editor.
+本项目是我学习 **Rust 基础语法与核心概念** 的个人代码练习与笔记仓库，配套 [shipthatcode.com](https://shipthatcode.com) 上的 [Rust Fundamentals](https://shipthatcode.com/courses/rust-fundamentals) 课程。
 
-## What you need
+---
 
-- **git** and a terminal (macOS/Linux: the built-in one; Windows: see below)
-- Rust (`rustc --version` should work — install via rustup.rs)
-- any editor you like — VS Code, Vim, JetBrains, anything
+## 📚 学习内容与章节进度
 
-### On Windows
+- [ ] `01` - Hello World (基础输出)
+- [ ] `02` - Variables & Mutability (变量与可变性)
+- [ ] `03` - Numbers & Math (数值类型与数学运算)
+- [ ] `04` - String & &str (字符串与字符串切片)
+- [ ] `05` - Formatting (格式化输出)
+- [ ] `06` - If & Match (条件判断与模式匹配)
+- [ ] `07` - Loops (循环控制)
+- [ ] `08` - Functions (函数与返回值)
+- [ ] `09` - Ownership & Borrowing (所有权与借用机制)
+- [ ] `10` - Vec (动态数组)
+- [ ] `11` - HashMap (哈希表)
+- [ ] `12` - Iterators (迭代器)
+- [ ] `13` - Structs (结构体)
+- [ ] `14` - Enums & Match (枚举与高级匹配)
+- [ ] `15` - Result & Option (错误处理与空值安全)
 
-Use **WSL** if you can: run `wsl --install` in an admin PowerShell once, then do everything (git, editing, `./run_tests.sh`) inside the Ubuntu terminal — it behaves exactly like the grader.
+---
 
-[Git Bash](https://git-scm.com/downloads) (installs with git) also runs `./run_tests.sh`. One caveat: native Windows compilers and runtimes write Windows line endings (`\r\n`), so on byte-exact tests you can see local FAILs where the diff looks identical — your logic is fine, the invisible line endings differ. If that happens, trust **Check my solution** on the lesson page (graded on Linux), or switch to WSL.
+## 🛠️ 环境要求
 
-## Getting started (one-time setup)
+- **Rust 工具链**：已安装 `rustc` 和 `cargo`（建议通过 [rustup.rs](https://rustup.rs/) 安装）。
+- **Git**：用于版本管理及运行测试。
+- **代码编辑器**：VS Code（推荐安装 `rust-analyzer` 插件）、RustRover 或任何喜欢的编辑器。
 
-1. Unzip this download and open the folder in your editor.
-2. Create a new **empty, public** repo at [github.com/new](https://github.com/new) — leave "Add a README" and ".gitignore" **unchecked** (this folder already has both).
-3. In your terminal, inside the unzipped folder, push it to GitHub:
+### Windows 运行说明
 
-   ```sh
-   git init
-   git add .
-   git commit -m "start Rust Fundamentals"
-   git branch -M main
-   git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
-   git push -u origin main
+本项目测试脚本为 `run_tests.sh`（Shell 脚本），在 Windows 环境下推荐以下方式运行：
+
+1. **方式 1（推荐）：使用 Git Bash 终端**
+   - 在项目目录空白处右键选择 **"Open Git Bash here"**，直接运行 `./run_tests.sh 01`。
+2. **方式 2：在 CMD / PowerShell 中调用 Git 的 Bash**
+   ```cmd
+   bash run_tests.sh 01
+   # 或
+   sh run_tests.sh 01
+   ```
+3. **方式 3：使用 WSL (Windows Subsystem for Linux)**
+   ```cmd
+   wsl ./run_tests.sh 01
    ```
 
-4. Paste your repo link on the [course page](https://shipthatcode.com/courses/rust-fundamentals) ("Work in your own editor" → **Link repo**). Done — you never do this again.
+> **提示**：Windows 下请注意保持文件换行符为 `LF`，避免因 `CRLF` 导致测试输出比对失败。
 
-## The lesson loop
+---
 
-1. Read the lesson on shipthatcode, write your code in `main.rs` here.
-2. Test locally against **the lesson you're on**: `./run_tests.sh 01`, `./run_tests.sh 02`, and so on. On Windows, run this inside Git Bash. (A bare `./run_tests.sh` runs every lesson's tests, which is only useful on courses where one program answers all of them — see below.)
-3. When it passes: `git add -A && git commit -m "lesson 01" && git push`
-4. Hit **Check my solution** on the lesson page — shipthatcode pulls this repo and grades it against the full suite, including hidden tests.
+## 🚀 学习与测试流程
 
-## How this repo is laid out
+1. **编写代码**：
+   在 `main.rs` 中编写对应章节的练习代码。
 
-- `main.rs` — the program you're grading right now.
-- `tests/` — the public test cases per lesson (`tests/01-…/1.in` → expected `1.out`).
-- `run_tests.sh` — the local runner. `.shipthatcode.json` tells the grader what this repo is; don't delete either.
+2. **本地运行测试**：
+   针对当前章节进行针对性测试（如第 1 课）：
+   ```bash
+   bash run_tests.sh 01
+   ```
+   *(如果直接运行 `./run_tests.sh` 则会一次性运行所有章节的测试)*
 
-### One lesson at a time
+3. **保存与归档（可选）**：
+   每道题都是独立的练习，进入下一课时可以直接覆盖 `main.rs` 内容。
+   - 历史练习代码都已保存在 Git 提交记录中。
+   - 如果想在本地保留每个课时的代码副本，可以在根目录下新建 `solutions/` 文件夹（例如复制为 `solutions/01-hello-world.rs`）。
 
-Each lesson states its own input and output format, and **most lessons are a separate exercise rather than a bigger version of the last one**. Two lessons can be handed the same input line and correctly want different output — a tokenizer prints `[ls] [-la]`, while the next lesson, which receives already-tokenized input, prints `ls -la`. No single program can satisfy both, and it isn't supposed to.
+4. **提交与推送**：
+   ```bash
+   git add -A
+   git commit -m "feat: 完成第 01 课练习"
+   git push
+   ```
 
-So treat `main.rs` as the file for the lesson you're grading: when you move on, change what it does. Nothing is lost — every earlier lesson is in your git history (`git log`, `git show`), and shipthatcode remembers each lesson you passed, so a lesson stays completed even after you replace the code that passed it. If you'd rather keep the code visible, copy it aside first (`cp main.rs solutions/01-<lesson>.rs`) — extra files are ignored by the grader.
+5. **在线评测**：
+   在课程页面点击 **Check my solution** 进行全量在线判题。
 
-When a lesson genuinely does build on the previous one, its own text says so and its tests will pass with the earlier behaviour still in place.
+---
 
-## If the course gets updated
+## 📁 目录结构
 
-Courses improve over time — exercises get added, tests get fixed. If the [course page](https://shipthatcode.com/courses/rust-fundamentals) says your starter is out of date: download a fresh zip, **delete this repo's `tests/` folder entirely**, copy in the fresh `tests/` and `.shipthatcode.json`, and keep your own code exactly as it is. (Don't merge test folders — lesson numbering can shift between versions.) Lessons you've already completed stay completed either way.
+```text
+rust/
+├── main.rs              # 当前练习的代码文件
+├── run_tests.sh         # 本地测试运行脚本
+├── tests/               # 各课程章节的测试用例输入/输出 (01-15)
+│   ├── 01-hello-world/
+│   ├── 02-variables-and-mutability/
+│   └── ...
+├── .shipthatcode.json   # 课程在线评测配置文件（请勿删除）
+└── README.md            # 项目说明文档
+```
 
-<sub>Repo topic suggestion: `shipthatcode` · Starter generated by [shipthatcode.com](https://shipthatcode.com)</sub>
